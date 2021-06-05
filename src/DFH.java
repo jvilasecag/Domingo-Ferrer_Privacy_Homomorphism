@@ -51,7 +51,9 @@ public class DFH {
 		
 		ClassifiedLevel cl = new ClassifiedLevel();
 		BigInteger[] mmprima = cl.mBuilder(clearTSize);
+		System.out.println("AB");
 		BigInteger r = cl.rBuilder(mmprima[0]);
+		System.out.println("ACC");
 		DomingoFerrerAlgorithm DFA = new DomingoFerrerAlgorithm(d, mmprima[0], r, mmprima[1]);
 
 		System.out.println();
