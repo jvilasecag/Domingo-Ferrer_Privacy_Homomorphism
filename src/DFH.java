@@ -51,9 +51,7 @@ public class DFH {
 		
 		ClassifiedLevel cl = new ClassifiedLevel();
 		BigInteger[] mmprima = cl.mBuilder(clearTSize);
-		System.out.println("AB");
 		BigInteger r = cl.rBuilder(mmprima[0]);
-		System.out.println("ACC");
 		DomingoFerrerAlgorithm DFA = new DomingoFerrerAlgorithm(d, mmprima[0], r, mmprima[1]);
 
 		System.out.println();
@@ -63,22 +61,34 @@ public class DFH {
 		System.out.println();
 		System.out.println("Enter number a to sum");
 		BigInteger numberaToSum = input.nextBigInteger();
+		BigInteger[] encrypteda = DFA.encrypt(numberaToSum);
+		System.out.print("The encryption of number " + numberaToSum + " is: ");
+		DFA.printPolynomial(encrypteda);
 		System.out.println("Enter number b to sum");
 		BigInteger numberbToSum = input.nextBigInteger();
+		BigInteger[] encryptedb = DFA.encrypt(numberbToSum);
+		System.out.print("The encryption of number " + numberbToSum + " is: ");
+		DFA.printPolynomial(encryptedb);
 		System.out.println("Enter number c to (a+b)*c");
 		BigInteger numberc = input.nextBigInteger();
+		BigInteger[] encryptedc = DFA.encrypt(numberc);
+		System.out.print("The encryption of number " + numberc + " is: ");
+		DFA.printPolynomial(encryptedc);
 		System.out.println("Enter number k to k(a+b)*c");
 		BigInteger numberk = input.nextBigInteger();
 		
-		BigInteger[] encrypteda = DFA.encrypt(numberaToSum);
-		BigInteger[] encryptedb = DFA.encrypt(numberbToSum);
-		BigInteger[] encryptedc = DFA.encrypt(numberc);
 		BigInteger[] encryptedSumDFA = DFA.sumUnclassified(encrypteda, encryptedb);
+		System.out.print("The result of a+b is: ");
+		DFA.printPolynomial(encryptedSumDFA);
 		BigInteger[] encryptedProductDFA = DFA.unClassifiedMultiply(encryptedSumDFA, encryptedc);
+		System.out.print("The result of (a+b)*c is: ");
+		DFA.printPolynomial(encryptedProductDFA);
 		BigInteger[] encryptedConstantProductDFA = DFA.unClassifiedConstantProduct(encryptedProductDFA, numberk);
+		System.out.print("The result of k(a+b)*c is: ");
+		DFA.printPolynomial(encryptedConstantProductDFA);
 		
 		BigInteger decryptedResult = DFA.decrypt(encryptedConstantProductDFA);
-		System.out.println(decryptedResult);
+		System.out.println("The final result is: " + decryptedResult);
 		
 		input.close();
 	}

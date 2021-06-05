@@ -20,16 +20,12 @@ public class ClassifiedLevel {
 	///	BigInteger bigClearTextSize = BigInteger.valueOf(clearTextSize);
 		ArrayList<BigInteger> divisorsList = new ArrayList<BigInteger>();
 		while(m.compareTo(bound) < 0) {
-			System.out.println("A");
 			BigInteger bigDivisor = new BigInteger(clearTextSize, rand);
-			System.out.println("rand divisor: " + bigDivisor);
 	//		BigInteger bigDivisor = BigInteger.valueOf(divisor);
 			m = m.multiply(bigDivisor);
-			System.out.println("B");
 			divisorsList.add(bigDivisor);
 		//	tools.printPolynomial(divisorsList);
 		}
-		System.out.println("C");
 		int i = 0;
 		while (mprima.compareTo(BigInteger.valueOf(2).pow(clearTextSize-1)) < 0) {
 			mprima = divisorsList.get(i);
@@ -38,7 +34,6 @@ public class ClassifiedLevel {
 				break;
 			}
 		}
-		System.out.println("mprima: " + mprima);
 		mAndmprima[0] = m;
 		mAndmprima[1] = mprima;
 		return mAndmprima;
@@ -52,11 +47,9 @@ public class ClassifiedLevel {
 	public BigInteger rBuilder(BigInteger m) {
 		Random rand = new Random();
 		int r = rand.nextInt(1000);
-		System.out.println("r provisional: " + r);
-		System.out.println("m: " + m);
 		BigInteger bigR = BigInteger.valueOf(r);
 		while (!(BigInteger.valueOf(1).compareTo(bigR.gcd(m)) == 0)) {
-			System.out.println("buscantgcd");
+			r = rand.nextInt(1000);
 			bigR = BigInteger.valueOf(r);
 		}
 		return bigR;

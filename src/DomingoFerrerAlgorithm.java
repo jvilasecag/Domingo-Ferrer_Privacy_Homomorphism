@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class DomingoFerrerAlgorithm {
@@ -121,6 +122,19 @@ public class DomingoFerrerAlgorithm {
 			constantProduct[i] = operand[i].multiply(constant);
 		}
 		return constantProduct;
+	}
+	
+	/**
+	 * Prints an arrayList of BigInteger for testing purposes
+	 * @param polynomial is an array where its components represent the coefficients of a polynomial
+	 */
+	public void printPolynomial(BigInteger[] polynomial) {
+		System.out.print("(");
+		for (BigInteger termd : polynomial) {
+			System.out.print(termd);
+			System.out.println(", ");
+		}
+		System.out.println(")");
 	}
 	
 }
